@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queen Alaa's Art Gallery</title>
+    <style>
+        /* General reset and body styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            background: #f3f3f3;
+            overflow-x: hidden;
+        }
+
+        /* Parallax background for sections */
+					.parallax div {
+    background: linear-gradient(49deg, #6a91cd, #2575fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+        .parallax {
+            background: url('images/background.jpg') no-repeat center/cover;
+            height: 100vh;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            font-size: 3em;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Navigation bar styles */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav h1 {
+            font-size: 24px;
+            color: #ffcbcb;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #ffcbcb;
+        }
+
+        /* Gallery styles */
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 40px;
+        }
+        .gallery img {
+            width: 300px;
+            height: 200px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Modal (Lightbox) styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal img {
+            max-width: 90%;
+            max-height: 80%;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+        }
+        .modal .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* About and Contact sections */
+        section {
+            padding: 60px 20px;
+            text-align: center;
+            color: #333;
+        }
+        .about, .contact {
+            background: #ffcbcb;
+            border-radius: 12px;
+            margin: 20px;
+            padding: 40px;
+            transition: transform 0.3s;
+        }
+        .about:hover, .contact:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation bar -->
+    <nav>
+        <h1>Queen Alaa's Art</h1>
+        <ul>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Parallax header -->
+    <div class="parallax">
+        <div>Explore Queen Alaa's Art</div>
+    </div>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <img src="images/image1.jpg" alt="Art 1" onclick="openModal(this)">
+        <img src="images/image2.jpg" alt="Art 2" onclick="openModal(this)">
+        <img src="images/image3.jpg" alt="Art 3" onclick="openModal(this)">
+        <img src="images/image4.jpg" alt="Art 4" onclick="openModal(this)">
+        <img src="images/image5.jpg" alt="Art 5" onclick="openModal(this)">
+        <img src="images/image6.jpg" alt="Art 6" onclick="openModal(this)">
+        <img src="images/image7.jpg" alt="Art 7" onclick="openModal(this)">
+        <img src="images/image8.jpg" alt="Art 8" onclick="openModal(this)">
+    </section>
+
+    <!-- Modal for Lightbox View -->
+    <div id="lightboxModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="modalImage" src="" alt="Art">
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2>About the Artist {Alaa}</h2>
+        <p>Queen Alaa is a visionary artist whose work captures the beauty and emotion of life. Her creations are a blend of vibrant colors and intricate details that bring each piece to life.<hr />الاء ليست مجرد رسامة، بل فنانة تعبر عن مشاعر الشخصيات التي ترسمها بعمق وإبداع. تتميز برسوماتها التي تجسد حركات وأحاسيس الشخصيات من كيميتسو نو يابا بدقة لافتة وتفاصيل فنية متقنة، مما يجذب كل من يرى أعمالها إلى عالم الأنمي. شغفها بالفن ينعكس في كل لوحة تنجزها، ويظهر تفانيها في تقديم عمل يليق بجمال وعظمة هذا الفن الياباني الرائع.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Contact</h2>
+        <p>If you're interested in knowing more about Queen Alaa's work, please reach out via insta at <a href="//www.instagram.com/hashimalaa951?igsh=NTFnNW52cnU3cnBj">https://www.instagram.com/hashimalaa951?igsh=NTFnNW52cnU3cnBj</a>.</p>
+    </section>
+
+    <script>
+        // Function to open the modal with the clicked image
+        function openModal(imgElement) {
+            document.getElementById("lightboxModal").style.display = "flex";
+            document.getElementById("modalImage").src = imgElement.src;
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            document.getElementById("lightboxModal").style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
